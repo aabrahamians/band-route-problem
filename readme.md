@@ -27,4 +27,34 @@ If you have questions on the challenge, please contact Jared Sartin: jared@leftf
 
 # Candidate Notes:
 
-### Fill in comments, external tool usage, and time tracking
+## Methods
+
+### Nearest Neighbor:
+Loop through the available locations and find the nearest neighbor each time starting from home which is the first node.
+
+each time the nearest neighbor is found it will remove from places array and add it to visited array.
+
+### Brute force:
+Find the distance it takes to travel a certain route and save it. Shuffle the array (leave home at 0 index). Find the distance of the newely shuffeld array. If new distance is less than our previously recorded distance then record new distance.
+
+this method yields better results the more times you shuffle the array. Obvious pitfall is this method would not work well with big datasets or high shuffle frequency (we prompt user to tell us how many times to shuffle)
+
+
+## Time Tracking
+- 30 min looking up html canvas
+- 2 hours nearest Neighbor
+- 1 hour brute force
+- 1 day researching datasets and algorithms. (still not done)
+
+
+## Resources
+
+canvas <br>
+<https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API>
+
+learning and researching algorithms
+<https://www.udemy.com/js-algorithms-and-data-structures-masterclass/>
+
+
+## Todo
+As the project currently stand we are not returning the band to their starting point which is home. Next step would be to negotiate bigger contracts to be able to reimburse the band or fix the solution above. 
