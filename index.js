@@ -2243,7 +2243,7 @@ window.addEventListener('load', () => {
         }
         //if brute is selected prompt user 
         if (isBrute) {
-            const runFrequency = prompt('How many times should i run it... dont add to many zeros(will crash)', 1000)
+            const runFrequency = prompt('How many times should it run... large numbers will crash', 10000)
             var trip = new tripCalculator2(selectedDataSet, runFrequency);
             //will run shuffle based on runFrequency set by user above
             trip.shuffleAndTest()
