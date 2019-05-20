@@ -2,7 +2,8 @@ class tripCalculator{
     constructor(nodes){
         this.places= [...nodes]; //array of unvisited x,y cooirdinates
         this.visited=[]; //array of visited x,y cooirdinates
-        this.visited.push(this.places.splice(0,1)[0])
+        this.lastVisited= this.places[0];
+        // this.visited.push(this.places.splice(0,1)[0])
     }
 
     //We update the places array everytime we add a location to visited.
@@ -16,18 +17,26 @@ class tripCalculator{
         // while this.places is not empty
         while(this.places.length){
             //map array to add distance to 
-            var remaining = this.places.map( (each) => {
+            var remaining = this.places.map( (each, index,list) => {
                     // calculcate distance of two nodes
-                    var dist = this.distance(each, this.visited[ this.visited.length - 1 ]);
+                    var dist;
+                    if (this.visited.length === 0 && index === 0){
+                        dist = 0;
+                        return { dist, ...each}
+                    } 
+                    dist = this.distance(each, this.lastVisited);
                     //return original node and distance
-                    return { dist, ...each}
-                }).
-                //sort by distance first node will be teh closest 
-                sort(function(a, b) {
+                    return { dist , ...each}
+                })
+
+                //sort by distance first node will be the closest 
+                remaining.sort(function(a, b) {
                     return a.dist - b.dist;
                 })
+            // save last visisted to help evaluate distance from next
+            this.lastVisited = remaining.splice(0,1)[0];
             // push the first index of the sorted array into visited array
-            this.visited.push(remaining.splice(0,1)[0]);
+            this.visited.push(this.lastVisited);
             //replace array of remaining nodes with our this .places arrray
             this.setPlaces(remaining) 
             //run function reccursively untill this.places.length is 0 and we exit this function

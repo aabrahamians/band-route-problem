@@ -1,6 +1,14 @@
 window.addEventListener('load', () => {
 
     var canvas = document.getElementById("myCanvas");
+    canvas.addEventListener('click', on_canvas_click, false);
+    function on_canvas_click(ev) {
+        var x = ev.clientX - canvas.offsetLeft;
+        var y = ev.clientY - canvas.offsetTop;
+        console.log('%c%s', 'color: #00a3cc', x , y);
+    
+        
+    }
     var selectedDataSet;
     var ctx = canvas.getContext('2d');
     //provided datasets
